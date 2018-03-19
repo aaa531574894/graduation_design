@@ -1,0 +1,8 @@
+#以下文件不跟踪
+
+.idea
+*.iml
+/common/target
+/api/target
+/web/target
+/core/target
