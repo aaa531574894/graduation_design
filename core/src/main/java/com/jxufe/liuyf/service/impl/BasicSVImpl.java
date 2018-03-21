@@ -2,18 +2,24 @@ package com.jxufe.liuyf.service.impl;
 
 import com.jxufe.liuyf.cache.interfaces.ITablePrefix;
 import com.jxufe.liuyf.cache.redis.JedisController;
+import com.jxufe.liuyf.dao.interfaces.CfgBusinessCodeMapper;
 import com.jxufe.liuyf.dao.interfaces.CfgCacheMapper;
+import com.jxufe.liuyf.fsv.common.bean.CfgBusinessCode;
 import com.jxufe.liuyf.fsv.common.bean.CfgCache;
 import com.jxufe.liuyf.fsv.common.bean.CfgCacheExample;
 import com.jxufe.liuyf.service.interfaces.IBasicSV;
 import com.jxufe.lyf.utils.ClassUtils;
 import com.jxufe.lyf.utils.IndexUtils;
 import com.jxufe.lyf.utils.StringUtils;
+import org.apache.ibatis.jdbc.Null;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -29,7 +35,8 @@ import java.util.List;
 public class BasicSVImpl implements IBasicSV {
     private final static Logger log = LoggerFactory.getLogger(BasicSVImpl.class);
     private CfgCacheMapper cfgCacheMapper;
-
+    @Autowired
+    SqlSessionFactory sqlSessionFactory;
     private JedisController jedisController;
     @Override
     public void initCache() {
@@ -89,6 +96,7 @@ public class BasicSVImpl implements IBasicSV {
         Class beanClass=ClassUtils.getClassByTableName(ITablePrefix.BEAN_PREFIX, tableName);
         return beanClass;
     }
+
 
 
     @Autowired

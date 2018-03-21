@@ -1,12 +1,11 @@
 package com.jxufe.liuyf;
 
 import com.jxufe.liuyf.dao.interfaces.CfgBusinessCodeMapper;
-import com.jxufe.liuyf.fsv.common.bean.CfgBusinessCode;
+import com.jxufe.liuyf.fsv.common.bean.CfgBusinessCodeExample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
 
 /**
  * description: please add the description
@@ -20,12 +19,13 @@ public class TestCenter extends AbstactBaseTest {
     @Autowired
     private CfgBusinessCodeMapper cfgBusinessCodeMapper;
 
+
     @Override
     public void test() {
-        List<CfgBusinessCode> list= cfgBusinessCodeMapper.selectByExample(null);
-        for (CfgBusinessCode item : list) {
-            System.out.println(item.getPk());
+        long startT = System.currentTimeMillis();
+        for (int i=0;i<10000;i++) {
+            cfgBusinessCodeMapper.selectByExample(new CfgBusinessCodeExample());
         }
-
+        System.out.println(System.currentTimeMillis() - startT);
     }
 }

@@ -9,4 +9,6 @@ package com.jxufe.liuyf.service.interfaces;
 public interface IBasicSV {
 
     void initCache();
+
+
 }
