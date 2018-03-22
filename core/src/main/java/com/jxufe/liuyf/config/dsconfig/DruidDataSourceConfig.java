@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 /**
- * description: please add the description
+ * description: druid数据源配置
  * author: LYF
  * create_date : 2018/3/21
  * create_time : 16:20
@@ -21,4 +21,7 @@ public class DruidDataSourceConfig {
     public DataSource getDruidDataSource() {
         return new DruidDataSource();
     }
+
+
+
 }

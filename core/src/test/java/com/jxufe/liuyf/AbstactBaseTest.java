@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public abstract class AbstactBaseTest {
+public  class AbstactBaseTest {
     private Logger log = LoggerFactory.getLogger(AbstactBaseTest.class);
 
     @Before    //所有测试方法开始前要执行的方法
@@ -36,9 +36,6 @@ public abstract class AbstactBaseTest {
         log.error("----------------------------------------------------------------------------------------------");
 
     }
-
-    @Test   //要实现的测试方法
-    public abstract void test();
 
 
 }

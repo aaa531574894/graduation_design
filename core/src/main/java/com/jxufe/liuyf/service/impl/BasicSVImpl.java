@@ -35,8 +35,7 @@ import java.util.List;
 public class BasicSVImpl implements IBasicSV {
     private final static Logger log = LoggerFactory.getLogger(BasicSVImpl.class);
     private CfgCacheMapper cfgCacheMapper;
-    @Autowired
-    SqlSessionFactory sqlSessionFactory;
+
     private JedisController jedisController;
     @Override
     public void initCache() {

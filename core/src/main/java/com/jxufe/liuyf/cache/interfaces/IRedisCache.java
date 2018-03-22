@@ -1,5 +1,7 @@
 package com.jxufe.liuyf.cache.interfaces;
 
+import java.util.List;
+
 /**
  * description: please add the description
  * author: LYF
@@ -13,7 +15,7 @@ public interface IRedisCache {
      * 　* @author liuyf
      * 　* @date 2018/3/17 14:21
      */
-    void refreshAllCache();
+    void refreshCacheByTableName(List lTableBean);
 
     /**
      * 　* @Description: 更新缓存

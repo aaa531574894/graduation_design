@@ -17,8 +17,6 @@ import java.util.Set;
  * create_date : 2018/3/16
  * create_time : 21:10
  */
-
-
 @Component
 @Scope("singleton")
 public class JedisClusterHolder {

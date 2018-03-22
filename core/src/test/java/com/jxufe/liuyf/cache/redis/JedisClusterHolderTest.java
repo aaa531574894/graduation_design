@@ -9,7 +9,6 @@ import com.jxufe.liuyf.AbstactBaseTest;
  * create_time : 13:59
  */
 public class JedisClusterHolderTest extends AbstactBaseTest {
-    @Override
     public void test() {
         System.out.println("执行了测试方法");
     }

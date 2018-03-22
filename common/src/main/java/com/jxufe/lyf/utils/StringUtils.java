@@ -75,4 +75,30 @@ public class StringUtils {
         }
 
     }
+
+    /**
+     * @Description: 通过缓存索引获取表名
+     * @return
+     *
+     */
+    public static String getTableNameByIndex(String index) {
+        return null;
+    }
+
+    /**
+     * @Description: 通过class 获取表名   只针对mybatismapper 接口类
+     * @return
+     */
+    public static String getTableNameByMapper(Class<?> clazz) {
+        String tableName = null;
+        if (clazz == null) {
+            throw new NullPointerException("传入的class不能为为空");
+        }
+        String ss[] = clazz.getName().split("\\.");
+        if (ss.length == 0 || ss == null) {
+            throw new NullPointerException("根据classname拆分string数组出错");
+        }
+        tableName = ss[ss.length - 1].replace("Mapper", "");
+        return tableName;
+    }
 }
