@@ -1,20 +1,16 @@
 package com.jxufe.liuyf.cache.redis;
 
 import com.jxufe.liuyf.cache.interfaces.IRedisCache;
-import com.jxufe.lyf.utils.ClassUtils;
 import com.jxufe.lyf.utils.JsonUtils;
-import com.jxufe.lyf.utils.SerializeUtils;
 import com.jxufe.lyf.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import redis.clients.jedis.JedisCluster;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * description: jedis操作封装类
@@ -27,7 +23,6 @@ import java.util.Map;
 public class JedisController implements IRedisCache {
     public final static String IS_CACHE_LOADED = "IS_CACHE_LOADED";   //判断redis是否已经加载缓存
     private final static Logger log = LoggerFactory.getLogger(JedisController.class);
-
     private JedisClusterHolder jedisClusterHolder;
 
 

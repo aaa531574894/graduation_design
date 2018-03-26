@@ -1,5 +1,6 @@
 package com.jxufe.liuyf;
 
+import com.jxufe.liuyf.cache.redis.ShellCommandExecutor;
 import com.jxufe.liuyf.service.interfaces.ICacheSV;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -18,15 +19,16 @@ public class TestCenter extends AbstactBaseTest {
 
 
     @Autowired
-    private ICacheSV cacheSV;
+    private ShellCommandExecutor shellCommandExecutor;
 
     public void test() {
 
     }
 
     @Test
-    public void TestListClassByPkgName() {
-        cacheSV.refreshAllCache();
+    public void TestFlushDB() {
+        shellCommandExecutor.flushDB();
+
     }
 
 }
