@@ -45,7 +45,8 @@ public class JsonUtils {
 
     /**
      * JSON字符串转化成Map对象具体需要转
-     *  具体转换类型，参考Map<String,User> result = mapper.readValue(src, new TypeReference<Map<String,User>>()
+     * 具体转换类型，参考Map<String,User> result = mapper.readValue(src, new TypeReference<Map<String,User>>()
+     *
      * @param jsonStr
      * @return
      */
@@ -100,24 +101,61 @@ public class JsonUtils {
 
     /**
      * 将POJO对象装换成String可以使用注解自定义成员属性名称的大小写
+     *
      * @param bean
      * @return
      * @throws IOException
      */
     public static String beanToJsonString(Object bean) throws IOException {
-        if(null ==bean)
+        if (null == bean)
             return "";
         //设置时间的format格式,add by haomeng
         java.text.DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         mapper.setDateFormat(dateFormat);
-        mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,Boolean.FALSE);
+        mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, Boolean.FALSE);
         //设置时间的format格式,add by haomeng
         String reqParamStr = mapper.writeValueAsString(bean);
         return reqParamStr;
     }
 
-    public static <T> T map2Object(Map map,Class<T> clazz) throws Exception{
+    public static <T> T map2Object(Map map, Class<T> clazz) throws Exception {
         String json = object2Json(map);
-        return json2Object(json,clazz);
+        return json2Object(json, clazz);
     }
+
+    public static Map object2Map(Object obj) throws IOException {
+        Map rtnMap = null;
+        rtnMap = json2Map(object2Json(obj));
+        return rtnMap;
+    }
+
+    /**
+     * @param
+     * @Description: 将url传参转换为json串儿 eg：UNAME=531574894&PWD=3871070 ...
+     * @author liuyf
+     * @date 2018/4/17 19:00
+     */
+    public static Map urlParams2Map(String urlParams) throws IOException {
+        Map<String, String> map = new HashMap<>();
+        if (StringUtils.isNullOrEmpty(urlParams)) {
+            throw new NullPointerException("入参为null");
+        }
+        String[] every = urlParams.split("&");
+        if (every.length == 0 || every == null) {
+            return null;
+        } else {
+            String leftAndRight[] =null;
+            for (String each : every) {
+                leftAndRight = each.split("=");
+                if (leftAndRight == null || leftAndRight.length != 2) {
+                    throw new RuntimeException("url参数格式不对" + urlParams);
+                }
+                map.put(leftAndRight[0], leftAndRight[1]);
+            }
+        }
+        return map;
+
+    }
+
+
 }

@@ -103,6 +103,6 @@ public class CfgCache extends  AbstractCacheTable implements CacheIndex  {
     @JsonIgnore
     @Override
     public String getIndex() {
-        return getFullClassName(true)+getTableName();
+        return getFullClassName(this)+getTableName();
     }
 }

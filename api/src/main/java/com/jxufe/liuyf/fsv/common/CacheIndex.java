@@ -1,5 +1,7 @@
 package com.jxufe.liuyf.fsv.common;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  * description: please add the description
  * author: LYF
@@ -14,5 +16,7 @@ public interface CacheIndex {
      * @date 2018/3/19 20:56
      * @param
      */
-    public abstract String getIndex();
+
+    //注意：实现此方法 需要添加@JsonIgnore注解   不然json2Object会失败
+    String getIndex();
 }

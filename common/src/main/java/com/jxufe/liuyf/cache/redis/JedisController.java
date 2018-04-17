@@ -21,24 +21,23 @@ import java.util.List;
 
 @Component
 public class JedisController implements IRedisCache {
-    public final static String IS_CACHE_LOADED = "IS_CACHE_LOADED";   //判断redis是否已经加载缓存
     private final static Logger log = LoggerFactory.getLogger(JedisController.class);
     private JedisClusterHolder jedisClusterHolder;
-
+    public static Boolean IS_CACHE_READY = Boolean.TRUE;    //判断redis是否已经加载缓存
 
     @Override
     public void refreshCacheByTableName(List lTableBean) {
-        //先取一个bean出来  清空这个前缀的所有缓存  然后开始刷入新的缓存
+        //  暂时不做  只实现全量刷新缓存  不刷新指定缓存表
     }
 
     @Override
-    public void update(String key, Object obj) {
+    public void update(String key, Object obj) throws Exception {
         set(key, obj);
     }
 
-
     @Override
-    public boolean containsKey(String key) {
+    public boolean containsKey(String key) throws Exception {
+        checkCacheState();
         boolean result = false;
         JedisCluster jedis = null;
         try {
@@ -54,7 +53,8 @@ public class JedisController implements IRedisCache {
 
 
     @Override
-    public String getAsString(String index) {
+    public String getAsString(String index) throws Exception {
+        checkCacheState();
         String rtnObj = null;
         if (!StringUtils.isNullOrEmpty(index)) {
             rtnObj = jedisClusterHolder.getJedisCluster().get(index);
@@ -71,13 +71,14 @@ public class JedisController implements IRedisCache {
      * @return
      */
     @Override
-    public Object getAsObject(String index) {
+    public Object getAsObject(String index) throws Exception {
+        checkCacheState();
         Object obj = null;
         Class clazz = null;
         String className = null;
-        if (StringUtils.isNullOrEmpty(index)){
+        if (StringUtils.isNullOrEmpty(index)) {
             throw new NullPointerException("传入的缓存索引不能为空");
-        }else {
+        } else {
             className = StringUtils.getClassNameByIndex(index);
         }
         try {
@@ -86,10 +87,10 @@ public class JedisController implements IRedisCache {
             e.printStackTrace();
             return null;
         }
-        try{
-            obj = JsonUtils.json2Object(jedisClusterHolder.getJedisCluster().get(index),clazz);
+        try {
+            obj = JsonUtils.json2Object(jedisClusterHolder.getJedisCluster().get(index), clazz);
         } catch (IOException e) {
-            log.error("json2Object失败"+e);
+            log.error("json2Object失败" + e);
             e.printStackTrace();
         }
         return obj;
@@ -97,20 +98,9 @@ public class JedisController implements IRedisCache {
     }
 
 
-    /**
-     * redis中的关键字   IS_CACHE_LOADED 作为缓存是否加载好的flag
-     *
-     * @return
-     */
-
     @Override
     public boolean isCacheLoaded() {
-        String result = jedisClusterHolder.getJedisCluster().get(IS_CACHE_LOADED);
-        if (result.equalsIgnoreCase("TRUE")) {
-            return true;
-        } else {
-            return false;
-        }
+        return IS_CACHE_READY.booleanValue() == true;
     }
 
 
@@ -121,7 +111,8 @@ public class JedisController implements IRedisCache {
 
 
     @Override
-    public void set(String key, Object object) {
+    public void set(String key, Object object) throws Exception {
+        checkCacheState();
         String sValue = null;
         try {
 
@@ -133,9 +124,45 @@ public class JedisController implements IRedisCache {
         jedisClusterHolder.getJedisCluster().set(key, sValue);
     }
 
+    @Override
+    public void fSet(String key, Object object) {
+        String sValue = null;
+        try {
+
+            sValue = JsonUtils.object2Json(object);
+        } catch (IOException e) {
+            log.error("object转json失败");
+            e.printStackTrace();
+        }
+        jedisClusterHolder.getJedisCluster().set(key, sValue);
+    }
+
+    @Override
+    public void publish(String channel, String message) {
+        jedisClusterHolder.getJedisCluster().publish(channel, message);
+    }
+
+    private void checkCacheState() throws RuntimeException {
+        if (IS_CACHE_READY==Boolean.TRUE) {
+            log.info("缓存已经准备就绪");
+        } else {
+            throw new RuntimeException("正在刷新缓存或者缓存未初始化，请稍后尝试");
+        }
+    }
+
+
+    public void setFlag(String key, String value) {
+        jedisClusterHolder.getJedisCluster().set(key, value);
+    }
+
+
+
+
 
     @Autowired
     public void setJedisClusterHolder(JedisClusterHolder jedisClusterHolder) {
         this.jedisClusterHolder = jedisClusterHolder;
     }
+
+
 }

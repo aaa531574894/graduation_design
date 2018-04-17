@@ -24,7 +24,7 @@ public class IndexUtils {
     public static String getPkByObject(Object object) {
         String pk = null;
         try {
-            Method method = object.getClass().getMethod("getPk");
+            Method method = object.getClass().getMethod("getIndex");
             pk = (String) method.invoke(object);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

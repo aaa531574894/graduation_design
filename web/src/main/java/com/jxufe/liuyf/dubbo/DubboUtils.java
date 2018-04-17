@@ -1,10 +1,15 @@
 package com.jxufe.liuyf.dubbo;
 
+import com.jxufe.liuyf.fsv.common.DubboResult;
+import com.jxufe.liuyf.fsv.common.bean.CfgBusinessCode;
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.Null;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -26,18 +31,25 @@ public class DubboUtils {
         DubboUtils.dubboFactory = dubboFactory;
     }
 
-    public static Object callDubbo(String busi_code, Map mParams) {
-        Object rtnObj = null;
-        try {
-            Object object = dubboFactory.getDubbo("com.jxufe.liuyf.fsv.interfaces.ISecurityFSV");
-            Method method = Class.forName("com.jxufe.liuyf.fsv.interfaces.ISecurityFSV").getMethod("isRegisted", Map.class);
-            method.invoke(object, mParams);
-            log.info(object.getClass().toString());
-        } catch (Exception e) {
-            log.error("dubboUtil error" + e);
+    public static DubboResult callDubbo(CfgBusinessCode cfgBusinessCode, Map mParams) {
+        if (cfgBusinessCode == null) {
+            throw new NullPointerException("callDubbo 传入cfgBusinessCode对象为null");
         }
-        return rtnObj;
+        DubboResult dubboResult = null;
+        String fsv = null;
+        String methodName = null;
+        try {
+            fsv = cfgBusinessCode.getInterfacee();
+            methodName = cfgBusinessCode.getMothod();
+            if (fsv != null && methodName != null) {
+                Object aimedObj = dubboFactory.getDubbo(fsv);
+                Method method = Class.forName(fsv).getMethod(methodName, Map.class);
+                dubboResult = (DubboResult) method.invoke(aimedObj, mParams);
+            }
+        } catch (Exception e) {
+            log.error("dubboUtil error" + e.getMessage());
+            e.printStackTrace();
+        }
+        return dubboResult;
     }
-
-
 }

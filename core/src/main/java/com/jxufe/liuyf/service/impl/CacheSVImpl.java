@@ -1,6 +1,9 @@
 package com.jxufe.liuyf.service.impl;
 
+import com.jxufe.liuyf.cache.JShell;
+import com.jxufe.liuyf.cache.redis.JedisClusterHolder;
 import com.jxufe.liuyf.cache.redis.JedisController;
+import com.jxufe.liuyf.cache.redis.JedisSubscriber;
 import com.jxufe.liuyf.dao.DAORepository;
 import com.jxufe.liuyf.dao.interfaces.CfgCacheMapper;
 import com.jxufe.liuyf.fsv.common.CacheIndex;
@@ -28,7 +31,8 @@ public class CacheSVImpl implements ICacheSV {
     private JedisController jedisController;
     private DAORepository daoRepository;
     private CfgCacheMapper cfgCacheMapper;
-
+    @Autowired
+    private JedisClusterHolder jedisClusterHolder;
     @Override
     public void refreshCacheByTableName(String tableName) {
         if (StringUtils.isNullOrEmpty(tableName)) {
@@ -47,12 +51,12 @@ public class CacheSVImpl implements ICacheSV {
                 try {
                     List<CacheIndex> lCacheIndex = (List<CacheIndex>) method.invoke(mapper, (Object) null);
                     for (CacheIndex item : lCacheIndex) {
-                        jedisController.set(item.getIndex(), item);
+                        jedisController.fSet(item.getIndex(), item);
                     }
                 } catch (IllegalAccessException e) {
                     log.error("method.invode传入参数有问题" + e);
                     e.printStackTrace();
-                } catch (InvocationTargetException e) {
+                } catch (Exception e) {
                     log.error(e.getMessage());
                     e.printStackTrace();
                 }
@@ -63,17 +67,34 @@ public class CacheSVImpl implements ICacheSV {
 
     @Override
     public void refreshAllCache() {
-        //读 cfg_cache表  获取需要缓存的表名  然后调用refreshCacheByTableName 方法
-        List<CfgCache> list = cfgCacheMapper.selectByExample(null);
-        String tableName;
-        if (list != null && list.size() != 0) {
-            for (CfgCache cfgCache : list) {
-                tableName = cfgCache.getTableName();
-                refreshCacheByTableName(tableName);
+        JShell.flushAllCache();  //调用redis主机的shell脚本  重启redis  即是清空缓存
+        jedisClusterHolder.resetCluser();
+        synchronized (JedisClusterHolder.LOCK){
+            //停止缓存操作，开始刷入缓存
+            try {
+                jedisController.publish(JedisSubscriber.SUB_CHANNEL,"FALSE");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            List<CfgCache> list = cfgCacheMapper.selectByExample(null);
+            String tableName;
+            if (list != null && list.size() != 0) {
+                for (CfgCache cfgCache : list) {
+                    tableName = cfgCache.getTableName();
+                    refreshCacheByTableName(tableName);
+                }
+            }
+            //设置缓存刷完的标志
+            try {
+                jedisController.publish(JedisSubscriber.SUB_CHANNEL,"TRUE");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            JedisController.IS_CACHE_READY = Boolean.TRUE;
         }
-        jedisController.set(JedisController.IS_CACHE_LOADED, "TRUE");
     }
+
+
 
 
     @Autowired
@@ -90,6 +111,8 @@ public class CacheSVImpl implements ICacheSV {
     public void setCfgCacheMapper(CfgCacheMapper cfgCacheMapper) {
         this.cfgCacheMapper = cfgCacheMapper;
     }
+
+
 }
 
 

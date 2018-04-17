@@ -1,7 +1,8 @@
 package com.jxufe.liuyf;
 
-import com.jxufe.liuyf.cache.redis.ShellCommandExecutor;
+import com.jxufe.liuyf.fsv.common.bean.InsUser;
 import com.jxufe.liuyf.service.interfaces.ICacheSV;
+import com.jxufe.liuyf.service.interfaces.ISecuritySV;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 /**
- * description: ²âÊÔÖĞĞÄ   ĞèÒª±»²âÊÔµÄ·½·¨  ¼ÓÉÏ@Test×¢½â
+ * description: æµ‹è¯•ä¸­å¿ƒ   éœ€è¦è¢«æµ‹è¯•çš„æ–¹æ³•  åŠ ä¸Š@Testæ³¨è§£
  * author: LYF
  * create_date : 2018/3/17
  * create_time : 18:58
@@ -17,18 +18,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TestCenter extends AbstactBaseTest {
     private static final Logger log = LoggerFactory.getLogger(TestCenter.class);
 
+    @Autowired
+    private ICacheSV iCacheSV;
+
 
     @Autowired
-    private ShellCommandExecutor shellCommandExecutor;
-
-    public void test() {
-
-    }
+    private ISecuritySV iSecuritySV;
 
     @Test
     public void TestFlushDB() {
-        shellCommandExecutor.flushDB();
-
+        iCacheSV.refreshAllCache();
+        InsUser insUser = new InsUser();
+        insUser.setUserId("aaa531574894");
+        insUser.setLoginPassword("3871070");
+        boolean is = false;
+        try {
+            is = iSecuritySV.checkLoginPermission(insUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(is);
     }
+
 
 }

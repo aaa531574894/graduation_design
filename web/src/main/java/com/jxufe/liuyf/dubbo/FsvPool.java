@@ -1,6 +1,7 @@
 package com.jxufe.liuyf.dubbo;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.jxufe.liuyf.fsv.interfaces.ICacheFSV;
 import com.jxufe.liuyf.fsv.interfaces.ISecurityFSV;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,9 @@ public class FsvPool {
 
     @Reference(version = "1.0.0")
     public ISecurityFSV iSecurityFSV;
+
+    @Reference(version = "1.0.0")
+    public ICacheFSV iCacheFSV;
 
 
 }

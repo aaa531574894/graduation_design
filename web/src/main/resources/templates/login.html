@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -60,18 +61,20 @@
             } else {
                 $.ajax({
                     url: "/login/check",
-                    data:{
-                        uname: username,
-                        pwd :pwd
+                    data: {
+                        UNAME: username,
+                        PWD: pwd,
+                        BUSINESS_CODE: "I_REGISTER_NEW_USER"
                     },
                     type: 'POST',
-                    contentType:'application/json',
+                    1: 'application/json',
+                    //返回的是json对象 不是字符串  不需要Json.parse()
                     success: function (result) {
-                        var obj=JSON.parse(result);
-                        if (obj.flag=='SUCCESS'){
-                            window.location.href = obj.page;
-                        }else {
-                            alert("登录失败");
+                        if (result.FLAG == 'SUCCESS') {
+                            window.alert("登录成功,即将跳转至主页");
+                            window.location.href = obj.PAGE;
+                        } else if (result.FLAG == 'FALUER') {
+                            window.alert("登录失败" + result.REASION);
                         }
                     }
                 });
@@ -79,9 +82,7 @@
             }
 
         });
-
     });
 </script>
 </body>
-
 </html>

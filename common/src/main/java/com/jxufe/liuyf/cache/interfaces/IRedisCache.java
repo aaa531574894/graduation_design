@@ -23,25 +23,25 @@ public interface IRedisCache {
      * 　* @date 2018/3/17 14:21
      */
 
-    void update(String key, Object obj);
+    void update(String key, Object obj) throws Exception;
 
     /**
      * 　* @Description: redis中是否包含此key
      * 　* @author liuyf
      * 　* @date 2018/3/17 14:20
      */
-    boolean containsKey(String key);
+    boolean containsKey(String key) throws Exception;
 
     /**
      * 　* @Description: 通过key拿到对象
      * 　* @author liuyf
      * 　* @date 2018/3/17 14:20
      */
-    Object getAsString(String key);
+    Object getAsString(String key) throws Exception;
 
 
 
-    Object getAsObject(String index);
+    Object getAsObject(String index) throws Exception;
 
 
     /**
@@ -65,5 +65,23 @@ public interface IRedisCache {
      *
      */
 
-    void set(String key, Object object);
+    void set(String key, Object object) throws Exception;
+
+
+    /**
+     * @param
+     * @Description: 刷入缓存时才可以用，其他时候不可用
+     * @author liuyf
+     * @date 2018/4/17 20:11
+     */
+
+    void fSet(String key, Object object);
+
+    /**
+     * @param 广播消息
+     * @Description:
+     * @author liuyf
+     * @date 2018/4/17 20:49
+     */
+    void publish(String channel, String message);
 }

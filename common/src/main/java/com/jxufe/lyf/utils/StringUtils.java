@@ -63,15 +63,18 @@ public class StringUtils {
         if (isNullOrEmpty(index)) {
             throw new NullPointerException("传入的索引不能为null");
         } else {
-            String every[] = index.split(".");
+            String every[] = index.split("\\.");
             for (int i = 0; i < every.length; i++) {
                 if (i != every.length-1) {
-                    sb.append(every[i]).append(".");
+                    sb.append(every[i]);
+                    if (i != every.length - 2) {
+                        sb.append(".");
+                    }
                 } else {
-                    sb.append("class");
+                    break;
                 }
             }
-            return sb.toString();
+            return sb.toString().trim();
         }
 
     }
@@ -101,4 +104,5 @@ public class StringUtils {
         tableName = ss[ss.length - 1].replace("Mapper", "");
         return tableName;
     }
+
 }

@@ -6,21 +6,26 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import redis.clients.jedis.*;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.JedisPubSub;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * description:  初始化并持有jedisCluster对象
- * author: LYF
- * create_date : 2018/3/16
- * create_time : 21:10
+ * description: please add the description
+ * author: Navy
+ * create_date : 2018/4/17
+ * create_time : 20:24
  */
 @Component
 @Scope("singleton")
-public class JedisClusterHolder {
-    private final static Logger log = LoggerFactory.getLogger(JedisClusterHolder.class);
+public class JedisSubscriber {
+    private static final Logger log = LoggerFactory.getLogger(JedisSubscriber.class);
+
+    public final static String SUB_CHANNEL="CAN_BE_ACCESS";  //被监听的频道
 
     @Value("${redis.hostAndPort}")
     private String host_and_ports;
@@ -31,32 +36,45 @@ public class JedisClusterHolder {
     @Value("${redis.timeOut}")
     private String time_out;
 
-
-    private JedisCluster mainCluster = null;  //主集群
-
+    private JedisCluster jedisCluster;
     private Set<HostAndPort> configSet = new HashSet<HostAndPort>();
 
-    public JedisClusterHolder() {
+    public JedisSubscriber() {
+
     }
-
-
-    public JedisCluster getJedisCluster() {
-        if (this.mainCluster == null) {
-            init();
-        }
-        return mainCluster;
-    }
-
 
     /**
-     * 　* @Description: 初始化持有的jedisCluter对象
-     * 　* @author liuyf
-     * 　* @date 2018/3/18 11:50
+     * @param
+     * @Description: 开始监听redis集群的状态
+     * @author liuyf
+     * @date 2018/4/17 20:39
      */
+    public void startLister() {
+        init();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                jedisCluster.subscribe(new JedisPubSub() {
+                    @Override
+                    public void onMessage(String channel, String message) {
+                        super.onMessage(channel, message);
+                        log.info("redis 状态改变" + message);
+                        if (message.trim().equalsIgnoreCase("TRUE")) {
+                            JedisController.IS_CACHE_READY = Boolean.TRUE;
+                        } else if (message.trim().equalsIgnoreCase("FALSE")) {
+                            JedisController.IS_CACHE_READY = Boolean.FALSE;
+                        }
+                    }
+                }, SUB_CHANNEL);
+            }
+        }).start();
+
+    }
+
     private void init() {
         if (StringUtils.isNullOrEmpty(host_and_ports)) {
             try {
-                throw new Exception("初始化jedisShardPool失败: hostAndPort为空");
+                throw new Exception("初始化jedisCluster失败: hostAndPort为空");
             } catch (Exception e) {
                 log.error("初始化jedisPoll失败" + e);
             }
@@ -74,15 +92,12 @@ public class JedisClusterHolder {
                 log.info("jedis cluster 连接池最大阻塞等待时间: " + max_wait);
             }
             try {
-                this.mainCluster = new JedisCluster(configSet, 10000, 5000, 10, poolConfig);
+                this.jedisCluster = new JedisCluster(configSet, 10000, 5000, 10, poolConfig);
             } catch (Exception e) {
                 log.error("初始化 jedisCluster失败....");
                 e.printStackTrace();
             }
 
         }
-
     }
-
-
 }
