@@ -1,16 +1,717 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>doge</title>
-    <!--引入bootstrap-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!--引入jquery-->
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!--bootstrap的js依赖-->
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <link href="/src/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/src/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="/src/js/jquery.min.js"></script>
+    <script src="/src/js/simpleCart.min.js"></script>
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="/src/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- timer -->
+    <link rel="stylesheet" href="/src/css/jquery.countdown.css"/>
+    <!-- //timer -->
+    <!-- animation-effect -->
+    <link href="/src/css/animate.min.css" rel="stylesheet">
+    <script src="/src/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </head>
+
 <body>
-index
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <div class="header-grid">
+            <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                <ul>
+                    <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.html">登录</a></li>
+                    <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.html">注册</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="logo-nav">
+            <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+                <h1><a href="index.html">Pet House <span>get your pet from here</span></a></h1>
+            </div>
+            <div class="logo-nav-left1">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                                data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">首页</a></li>
+                            <!-- 汪星人下拉展示菜单 -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">汪星人<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>大型犬</h6>
+                                                <li><a href="products.html">Clothing</a></li>
+                                                <li><a href="products.html">Wallets</a></li>
+                                                <li><a href="products.html">Shoes</a></li>
+                                                <li><a href="products.html">Watches</a></li>
+                                                <li><a href="products.html">Accessories</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>小型犬</h6>
+                                                <li><a href="products.html">Clothing</a></li>
+                                                <li><a href="products.html">Wallets,Bags</a></li>
+                                                <li><a href="products.html">Footwear</a></li>
+                                                <li><a href="products.html">Watches</a></li>
+                                                <li><a href="products.html">Accessories</a></li>
+                                                <li><a href="products.html">Jewellery</a></li>
+                                                <li><a href="products.html">Beauty & Grooming</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <!-- 喵星人下拉展示菜单 -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">喵星人 <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>长毛猫</h6>
+                                                <li><a href="furniture.html">Cookware</a></li>
+                                                <li><a href="furniture.html">Sofas</a></li>
+                                                <li><a href="furniture.html">Dining Tables</a></li>
+                                                <li><a href="furniture.html">Shoe Racks</a></li>
+                                                <li><a href="furniture.html">Home Decor</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>短毛猫</h6>
+                                                <li><a href="furniture.html">Carpets</a></li>
+                                                <li><a href="furniture.html">Tables</a></li>
+                                                <li><a href="furniture.html">Sofas</a></li>
+                                                <li><a href="furniture.html">Shoe Racks</a></li>
+                                                <li><a href="furniture.html">Sockets</a></li>
+                                                <li><a href="furniture.html">Electrical Machines</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <!-- 宠物用品-->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">宠物用品 <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>喵星人用品</h6>
+                                                <li><a href="furniture.html">Cookware</a></li>
+                                                <li><a href="furniture.html">Sofas</a></li>
+                                                <li><a href="furniture.html">Dining Tables</a></li>
+                                                <li><a href="furniture.html">Shoe Racks</a></li>
+                                                <li><a href="furniture.html">Home Decor</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>汪星人用品</h6>
+                                                <li><a href="furniture.html">Carpets</a></li>
+                                                <li><a href="furniture.html">Tables</a></li>
+                                                <li><a href="furniture.html">Sofas</a></li>
+                                                <li><a href="furniture.html">Shoe Racks</a></li>
+                                                <li><a href="furniture.html">Sockets</a></li>
+                                                <li><a href="furniture.html">Electrical Machines</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="logo-nav-right">
+                <div class="search-box">
+                    <div id="sb-search" class="sb-search">
+                        <form>
+                            <input class="sb-search-input" placeholder="Enter your search term..." type="search"
+                                   id="search">
+                            <input class="sb-search-submit" type="submit" value="">
+                            <span class="sb-icon-search"> </span>
+                        </form>
+                    </div>
+                </div>
+                <!-- search-scripts -->
+                <script src="/src/js/classie.js"></script>
+                <script src="/src/js/uisearch.js"></script>
+                <script>
+                    new UISearch(document.getElementById('sb-search'));
+                </script>
+                <!-- //search-scripts -->
+            </div>
+            <div class="header-right">
+                <div class="cart box_1">
+                    <a href="checkout.html">
+                        <h3>
+                            <div class="total">
+                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
+                                                                              class="simpleCart_quantity"></span> items)
+                            </div>
+                            <img src="images/bag.png" alt=""/>
+                        </h3>
+                    </a>
+                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //header -->
+<!-- banner -->
+<div class="banner">
+    <div class="container">
+        <div class="banner-info animated wow zoomIn" data-wow-delay=".5s">
+            <h3 style="color: #ffaa00">带你心仪的宠物回家</h3>
+            <h4>全场<span>8折<i>起</i></span></h4>
+            <div class="wmuSlider example1">
+                <div class="wmuSliderWrapper">
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="banner-wrap">
+                            <div class="banner-info1">
+                                <p>T-Shirts + Formal Pants + Jewellery + Cosmetics</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="banner-wrap">
+                            <div class="banner-info1">
+                                <p>Toys + Furniture + Lighting + Watches</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="banner-wrap">
+                            <div class="banner-info1">
+                                <p>Tops + Books & Media + Sports</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <script src="/src/js/jquery.wmuSlider.js"></script>
+            <script>
+                $('.example1').wmuSlider();
+            </script>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- banner-bottom -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="banner-bottom-grids">
+            <div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".2s">
+                <div class="grid">
+                    <figure class="effect-julia">
+                        <img src="images/4.jpg" alt=" " class="img-responsive"/>
+                        <figcaption>
+                            <h3>Pet <span>House</span><i>开始了解吧</i></h3>
+                            <div>
+                                <p>Cupidatat non proident, sunt</p>
+                                <p>Officia deserunt mollit anim</p>
+                                <p>Laboris nisi ut aliquip consequat</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".2s">
+                <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="images/1.jpg" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="banner-bottom-grid-left1-pos">
+                        <p>Discount 45%</p>
+                    </div>
+                </div>
+                <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="images/2.jpg" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="banner-bottom-grid-left1-position">
+                        <div class="banner-bottom-grid-left1-pos1">
+                            <p>Latest New Collections</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".2s">
+                <div class="banner-bottom-grid-left-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="images/3.jpg" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="grid-left-grid1-pos">
+                        <p>top and classic designs <span>2016 Collection</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //banner-bottom -->
+<!-- collections -->
+<div class="new-collections">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">宠物用品</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">为您的爱宠选择最合适的宠物用品与宠粮.</p>
+        <div class="new-collections-grids">
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="images/7.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+                        <div class="new-collections-grid1-image-pos">
+                            <a href="single.html">Quick View</a>
+                        </div>
+                        <div class="new-collections-grid1-right">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">Formal Shirt</a></h4>
+                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>$325</i> <span class="item_price">$250</span><a class="item_add" href="#">加入购物车 </a></p>
+                    </div>
+                </div>
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="images/8.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+                        <div class="new-collections-grid1-image-pos">
+                            <a href="single.html">Quick View</a>
+                        </div>
+                        <div class="new-collections-grid1-right">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">Running Shoes</a></h4>
+                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">加入购物车 </a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 new-collections-grid">
+                <div class="new-collections-grid1 new-collections-grid1-image-width animated wow slideInUp"
+                     data-wow-delay=".2s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="images/5.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+                        <div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">
+                            <a href="single.html">Quick View</a>
+                        </div>
+                        <div class="new-collections-grid1-right new-collections-grid1-right-rate">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="new-one">
+                            <p>New</p>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">Dining Table</a></h4>
+                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>$580</i> <span class="item_price">$550</span><a class="item_add" href="#">加入购物车 </a></p>
+                    </div>
+                </div>
+                <div class="new-collections-grid-sub-grids">
+                    <div class="new-collections-grid1-sub">
+                        <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
+                            <div class="new-collections-grid1-image">
+                                <a href="single.html" class="product-image"><img src="images/6.jpg" alt=" "
+                                                                                 class="img-responsive"/></a>
+                                <div class="new-collections-grid1-image-pos">
+                                    <a href="single.html">Quick View</a>
+                                </div>
+                                <div class="new-collections-grid1-right">
+                                    <div class="rating">
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4><a href="single.html">Wall Lamp</a></h4>
+                            <p>Vel illum qui dolorem eum fugiat.</p>
+                            <div class="new-collections-grid1-left simpleCart_shelfItem">
+                                <p><i>$480</i> <span class="item_price">$400</span><a class="item_add"
+                                                                                      href="#">加入购物车 </a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="new-collections-grid1-sub">
+                        <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
+                            <div class="new-collections-grid1-image">
+                                <a href="single.html" class="product-image"><img src="images/9.jpg" alt=" "
+                                                                                 class="img-responsive"/></a>
+                                <div class="new-collections-grid1-image-pos">
+                                    <a href="single.html">Quick View</a>
+                                </div>
+                                <div class="new-collections-grid1-right">
+                                    <div class="rating">
+                                        <div class="rating-left">
+                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4><a href="single.html">Wall Lamp</a></h4>
+                            <p>Vel illum qui dolorem eum fugiat.</p>
+                            <div class="new-collections-grid1-left simpleCart_shelfItem">
+                                <p><i>$280</i> <span class="item_price">$150</span><a class="item_add"
+                                                                                      href="#">加入购物车</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="images/10.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+                        <div class="new-collections-grid1-image-pos">
+                            <a href="single.html">Quick View</a>
+                        </div>
+                        <div class="new-collections-grid1-right">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">Pearl & Stone Anklet</a></h4>
+                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>$180</i> <span class="item_price">$120</span><a class="item_add" href="#">加入购物车 </a></p>
+                    </div>
+                </div>
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="images/11.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+                        <div class="new-collections-grid1-image-pos">
+                            <a href="single.html">Quick View</a>
+                        </div>
+                        <div class="new-collections-grid1-right">
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4><a href="single.html">Stones Bangles</a></h4>
+                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <div class="new-collections-grid1-left simpleCart_shelfItem">
+                        <p><i>$340</i> <span class="item_price">$257</span><a class="item_add" href="#">加入购物车</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //collections -->
+<!-- new-timer -->
+<div class="timer">
+    <div class="container">
+        <div class="timer-grids">
+            <div class="col-md-8 timer-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                <h3><a href="products.html">sunt in culpa qui officia deserunt mollit</a></h3>
+                <div class="rating">
+                    <div class="rating-left">
+                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="rating-left">
+                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="rating-left">
+                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="rating-left">
+                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="rating-left">
+                        <img src="images/1.png" alt=" " class="img-responsive"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
+                    <p><i>$580</i> <span class="item_price">$550</span></p>
+                    <h4>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                        nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
+                        qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui
+                        dolorem eum fugiat quo voluptas nulla pariatur.</h4>
+                    <p><a class="item_add timer_add" href="#">add to cart </a></p>
+                </div>
+                <div id="counter"></div>
+                <script src="/src/js/jquery.countdown.js"></script>
+                <script src="/src/js/script.js"></script>
+            </div>
+            <div class="col-md-4 timer-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                <div class="timer-grid-right1">
+                    <img src="images/17.jpg" alt=" " class="img-responsive"/>
+                    <div class="timer-grid-right-pos">
+                        <h4>Special Offer</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //new-timer -->
+<!-- collections-bottom -->
+<div class="collections-bottom">
+    <div class="container">
+        <div class="collections-bottom-grids">
+            <div class="collections-bottom-grid animated wow slideInLeft" data-wow-delay=".5s">
+                <h3>45% Offer For <span>Women & Children's</span></h3>
+            </div>
+        </div>
+        <div class="newsletter animated wow slideInUp" data-wow-delay=".5s">
+            <h3>Newsletter</h3>
+            <p>Join us now to get all news and special offers.</p>
+            <form>
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                <input type="email" value="Enter your email address" onfocus="this.value = '';"
+                       onblur="if (this.value == '') {this.value = 'Enter your email address';}" required="">
+                <input type="submit" value="Join Us">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //collections-bottom -->
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="footer-grids">
+            <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+                <h3>关于我们</h3>
+                <p>Pet House 是一个毕业设计项目，模拟提供一个购买宠物的线上渠道<span>用户再也不需要为去哪儿买宠物，担心宠物的质量而烦恼了.</span></p>
+            </div>
+            <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+                <h3>联系信息</h3>
+                <ul>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>江西省南昌市玉屏西大街665号江西财经大学</li>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a>liuyf13@asiainfo.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+86 18835604864</li>
+                </ul>
+            </div>
+            <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
+                <h3>关于源码</h3>
+                <p>项目源码已经开放于github上，详情请访问我的<a href="https://github.com/aaa531574894/graduation_design"> @github</a></p>
+            </div>
+            <div class="clearfix"></div>
+            a
+        </div>
+        <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+            <h2><a href="index.html"> Pet House<span>get your pet from here</span></a></h2>
+        </div>
+        <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
+            <p>Copyright &copy; 2018.Company name All rights reserved. <a>Pet House</a> - Collect from <a>宠物之家</a></p>
+        </div>
+    </div>
+</div>
+<!-- //footer -->
+
+
+<!--my own js  begin  -->
+<script type="text/javascript">
+    $("#turn_to_0").click(function () {
+        $('.banner').css({
+            'background': 'url(images/banner1.jpg) no-repeat 0px 0px',
+            'background-size': 'cover',
+            '-webkit-background-size': 'cover',
+            '-moz-background-size': 'cover',
+            '-o-background-size': 'cover',
+            '-ms-background-size': 'cover',
+            'min-height': '700px'
+        });   //修改横幅背景图1
+    });
+    $("#turn_to_1").click(function () {
+        $('.banner').css({
+            'background': 'url(images/banner2.jpg) no-repeat 0px 0px',
+            'background-size': 'cover',
+            '-webkit-background-size': 'cover',
+            '-moz-background-size': 'cover',
+            '-o-background-size': 'cover',
+            '-ms-background-size': 'cover',
+            'min-height': '700px'
+        });   //修改横幅背景图2
+    });
+    $("#turn_to_2").click(function () {
+        $('.banner').css({
+            'background': 'url(images/banner3.jpg) no-repeat 0px 0px',
+            'background-size': 'cover',
+            '-webkit-background-size': 'cover',
+            '-moz-background-size': 'cover',
+            '-o-background-size': 'cover',
+            '-ms-background-size': 'cover',
+            'min-height': '700px'
+        });   //修改横幅背景图3
+    });
+
+    <!--实现轮播图 begin-->
+    var i = 1;
+    function changeBannerImage() {
+        i++;
+        var id = i % 3;
+        $("#turn_to_" + id).click();
+    }
+    var dingshi = setInterval("changeBannerImage()", 3500);
+    <!--实现轮播图 end-->
+
+</script>
 </body>
 </html>

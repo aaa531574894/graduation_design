@@ -25,6 +25,8 @@ public class TestCenter extends AbstactBaseTest {
     @Autowired
     private ISecuritySV iSecuritySV;
 
+
+
     @Test
     public void TestFlushDB() {
         iCacheSV.refreshAllCache();
