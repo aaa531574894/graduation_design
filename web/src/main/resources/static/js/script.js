@@ -1,14 +1,11 @@
 
 $(document).ready(function(){
 
-
 	/* ---- Countdown timer ---- */
-
-	$('#counter').countdown({
-		timestamp : (new Date()).getTime() + 11*24*60*60*1000
-	});
-
-
+	/*$('#counter').countdown({
+	 timestamp : (new Date()).getTime() + 11*24*60*60*1000
+	 });
+*/
 	/* ---- Animations ---- */
 
 	$('#links a').hover(
@@ -24,17 +21,17 @@ $(document).ready(function(){
 
 	/* ---- Using Modernizr to check if the "required" and "placeholder" attributes are supported ---- */
 
-	if (!Modernizr.input.placeholder) {
+	/*if (!Modernizr.input.placeholder) {
 		$('.email').val('Input your e-mail address here...');
 		$('.email').focus(function() {
 			if($(this).val() == 'Input your e-mail address here...') {
 				$(this).val('');
 			}
 		});
-	}
+	}*/
 
 	// for detecting if the browser is Safari
-	var browser = navigator.userAgent.toLowerCase();
+	/*var browser = navigator.userAgent.toLowerCase();
 
 	if(!Modernizr.input.required || (browser.indexOf("safari") != -1 && browser.indexOf("chrome") == -1)) {
 		$('form').submit(function() {
@@ -52,6 +49,6 @@ $(document).ready(function(){
 			$('.popup').remove();
 		});
 	}
-
+*/
 
 });

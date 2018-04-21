@@ -1,4 +1,4 @@
-package com.jxufe.liuyf.fsv.common.bean;
+package com.jxufe.liuyf.fsv.common;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 

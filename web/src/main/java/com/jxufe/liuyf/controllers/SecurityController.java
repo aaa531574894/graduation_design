@@ -4,8 +4,10 @@ import com.jxufe.liuyf.cache.redis.JedisController;
 import com.jxufe.liuyf.dubbo.DubboUtils;
 import com.jxufe.liuyf.fsv.common.DubboResult;
 import com.jxufe.liuyf.fsv.common.bean.CfgBusinessCode;
+import com.jxufe.liuyf.fsv.common.bean.CfgPageContent;
 import com.jxufe.liuyf.fsv.common.bean.InsUser;
 import com.jxufe.lyf.utils.JsonUtils;
+import com.jxufe.lyf.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * desc: please add the description
+ * desc: 控制用户权限
  * author:LYF
  * create_date : 2018/3/14
  * create_time : 9:58
@@ -103,10 +105,6 @@ public class SecurityController {
 
 
 
-    @RequestMapping("/signup")
-    public String checkDubbo() {
-        return "signup";
-    }
 
 
 

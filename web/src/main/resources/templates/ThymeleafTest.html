@@ -3,5 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title>springboot-thymeleaf demo</title></head>
-<body><p th:text="'hello, ' + ${name} + '!'"/></body>
+<body>
+    <!--img替换链接路径-->
+    <!--<img th:src="@{|${testCache}|}" src="../static/images/3.jpg" th:id=*{imgId} id="test1" class="cls">-->
+
+    <img src="../static/images/3.jpg" >
+
+
+
+</body>
 </html>

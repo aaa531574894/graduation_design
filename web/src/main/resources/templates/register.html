@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>登录</title>
+    <title>注册</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
@@ -37,8 +37,8 @@
         <div class="header-grid">
             <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <ul>
-                    <li class="active"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.html">登录</a></li>
-                    <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.html">注册</a></li>
+                    <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.html">登录</a></li>
+                    <li class="active"><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.html">注册</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -204,31 +204,45 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a></li>
-            <li>登录</li>
+            <li class="active">注册新用户</li>
         </ol>
     </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- login -->
-<div class="login">
+
+<!-- register -->
+<div class="register">
     <div class="container">
-        <h3 class="animated wow zoomIn" data-wow-delay=".5s">登录</h3>
-        <p class="est animated wow zoomIn" data-wow-delay=".5s">请输入正确的用户名和密码完成登录</p>
-        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form>
-                <input type="email" placeholder="用户名">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">请填写以下必要信息，完成您的注册</p>
+        <div class="login-form-grids">
+            <h5 class="animated wow slideInUp" data-wow-delay=".5s">个人信息</h5>
+            <form class="animated wow slideInUp" data-wow-delay=".5s">
+                <input type="text" placeholder="姓名" >
+                <input type="text" placeholder="详细住址" >
+                <input type="text" placeholder="邮箱" >
+                <input type="text" placeholder="身份证号码"  >
+                <input type="text" placeholder="联系方式"  >
+            </form>
+            <h6 class="animated wow slideInUp" data-wow-delay=".5s">登录信息</h6>
+            <form class="animated wow slideInUp" data-wow-delay=".5s">
+                <input type="text" placeholder="用户名">
                 <input type="password" placeholder="登录密码">
-                <div class="forgot">
-                    <a href="#">忘记密码?</a>
+                <input type="password" placeholder="再次输入确认密码">
+                <div class="register-check-box">
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>我接受以下协议和条款</label>
+                    </div>
                 </div>
-                <input type="submit" value="登录">
+                <input type="submit" value="Register">
             </form>
         </div>
-        <h4 class="animated wow slideInUp" data-wow-delay=".5s">新用户?</h4>
-        <p class="animated wow slideInUp" data-wow-delay=".5s"><a href="register.html">注册</a> </p>
+        <div class="register-home animated wow slideInUp" data-wow-delay=".5s">
+            <a href="index.html">Home</a>
+        </div>
     </div>
 </div>
-<!-- //login -->
+<!-- //register -->
 
 <!-- footer -->
 <div class="footer">

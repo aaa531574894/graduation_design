@@ -1,5 +1,6 @@
 package com.jxufe.lyf.utils;
 
+import com.jxufe.liuyf.cache.redis.JedisController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -53,6 +54,7 @@ public class IndexUtils {
         }
         return index;
     }
+
 
 
 }

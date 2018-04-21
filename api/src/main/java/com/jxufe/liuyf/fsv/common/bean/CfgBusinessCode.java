@@ -1,6 +1,7 @@
 package com.jxufe.liuyf.fsv.common.bean;
 
 
+import com.jxufe.liuyf.fsv.common.AbstractCacheTable;
 import com.jxufe.liuyf.fsv.common.CacheIndex;
 import org.codehaus.jackson.annotate.JsonIgnore;
 

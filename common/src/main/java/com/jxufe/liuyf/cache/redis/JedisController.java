@@ -79,6 +79,7 @@ public class JedisController implements IRedisCache {
         if (StringUtils.isNullOrEmpty(index)) {
             throw new NullPointerException("传入的缓存索引不能为空");
         } else {
+            log.info(index);
             className = StringUtils.getClassNameByIndex(index);
         }
         try {

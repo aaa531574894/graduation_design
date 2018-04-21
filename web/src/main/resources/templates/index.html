@@ -1,34 +1,30 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <title>首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-
-    <link href="/src/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="/src/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <script src="/src/js/jquery.min.js"></script>
-    <script src="/src/js/simpleCart.min.js"></script>
-    <!-- for bootstrap working -->
-    <script type="text/javascript" src="/src/js/bootstrap-3.1.1.min.js"></script>
-    <!-- //for bootstrap working -->
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/simpleCart.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap-3.1.1.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic'
           rel='stylesheet' type='text/css'>
     <!-- timer -->
-    <link rel="stylesheet" href="/src/css/jquery.countdown.css"/>
+    <link rel="stylesheet" href="../static/css/jquery.countdown.css"/>
     <!-- //timer -->
     <!-- animation-effect -->
-    <link href="/src/css/animate.min.css" rel="stylesheet">
-    <script src="/src/js/wow.min.js"></script>
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+    <script src="../static/js/wow.min.js"></script>
     <script>
         new WOW().init();
     </script>
@@ -174,8 +170,8 @@
                     </div>
                 </div>
                 <!-- search-scripts -->
-                <script src="/src/js/classie.js"></script>
-                <script src="/src/js/uisearch.js"></script>
+                <script src="../static/js/classie.js"></script>
+                <script src="../static/js/uisearch.js"></script>
                 <script>
                     new UISearch(document.getElementById('sb-search'));
                 </script>
@@ -189,7 +185,7 @@
                                 <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
                                                                               class="simpleCart_quantity"></span> items)
                             </div>
-                            <img src="images/bag.png" alt=""/>
+                            <img src="../static/images/bag.png" alt=""/>
                         </h3>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
@@ -205,34 +201,35 @@
 <div class="banner">
     <div class="container">
         <div class="banner-info animated wow zoomIn" data-wow-delay=".5s">
-            <h3 style="color: #ffaa00">带你心仪的宠物回家</h3>
+            <h3 style="color: #ffaa00;" th:text="*{index_banner_slogan}">带你心仪的宠物回家</h3>
             <h4>全场<span>8折<i>起</i></span></h4>
             <div class="wmuSlider example1">
                 <div class="wmuSliderWrapper">
                     <article style="position: absolute; width: 100%; opacity: 0;">
                         <div class="banner-wrap">
                             <div class="banner-info1">
-                                <p>T-Shirts + Formal Pants + Jewellery + Cosmetics</p>
+                                <p th:text="*{index_banner_pic0_text}">T-Shirts + Formal Pants + Jewellery +
+                                    Cosmetics</p>
                             </div>
                         </div>
                     </article>
                     <article style="position: absolute; width: 100%; opacity: 0;">
                         <div class="banner-wrap">
                             <div class="banner-info1">
-                                <p>Toys + Furniture + Lighting + Watches</p>
+                                <p th:text="*{index_banner_pic1_text}">Toys + Furniture + Lighting + Watches</p>
                             </div>
                         </div>
                     </article>
                     <article style="position: absolute; width: 100%; opacity: 0;">
                         <div class="banner-wrap">
                             <div class="banner-info1">
-                                <p>Tops + Books & Media + Sports</p>
+                                <p th:text="*{index_banner_pic2_text}">Tops + Books & Media + Sports</p>
                             </div>
                         </div>
                     </article>
                 </div>
             </div>
-            <script src="/src/js/jquery.wmuSlider.js"></script>
+            <script src="../static/js/jquery.wmuSlider.js"></script>
             <script>
                 $('.example1').wmuSlider();
             </script>
@@ -247,14 +244,10 @@
             <div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".2s">
                 <div class="grid">
                     <figure class="effect-julia">
-                        <img src="images/4.jpg" alt=" " class="img-responsive"/>
+                        <img th:src="*{index_banner_bottom_11_url}" src="../static/images/4.jpg" alt=" "
+                             class="img-responsive"/>
                         <figcaption>
-                            <h3>Pet <span>House</span><i>开始了解吧</i></h3>
-                            <div>
-                                <p>Cupidatat non proident, sunt</p>
-                                <p>Officia deserunt mollit anim</p>
-                                <p>Laboris nisi ut aliquip consequat</p>
-                            </div>
+                            <h3 th:text="*{index_banner_bottom_11_text}"> 开始了解吧</h3>
                         </figcaption>
                     </figure>
                 </div>
@@ -262,19 +255,21 @@
             <div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".2s">
                 <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
                     <div class="banner-bottom-grid-left-grid1">
-                        <img src="images/1.jpg" alt=" " class="img-responsive"/>
+                        <img th:src="*{index_banner_bottom_21_url}" src="../static/images/1.jpg" alt=" "
+                             class="img-responsive"/>
                     </div>
                     <div class="banner-bottom-grid-left1-pos">
-                        <p>Discount 45%</p>
+                        <p th:text="*{index_banner_bottom_21_text}">Discount 45%</p>
                     </div>
                 </div>
                 <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
                     <div class="banner-bottom-grid-left-grid1">
-                        <img src="images/2.jpg" alt=" " class="img-responsive"/>
+                        <img th:src="*{index_banner_bottom_22_url}" src="../static/images/2.jpg" alt=" "
+                             class="img-responsive"/>
                     </div>
                     <div class="banner-bottom-grid-left1-position">
                         <div class="banner-bottom-grid-left1-pos1">
-                            <p>Latest New Collections</p>
+                            <p th:text="*{index_banner_bottom_22_text}">Latest New Collections</p>
                         </div>
                     </div>
                 </div>
@@ -282,10 +277,11 @@
             <div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".2s">
                 <div class="banner-bottom-grid-left-grid grid-left-grid1">
                     <div class="banner-bottom-grid-left-grid1">
-                        <img src="images/3.jpg" alt=" " class="img-responsive"/>
+                        <img th:src="*{index_banner_bottom_31_url}" src="../static/images/3.jpg" alt=" "
+                             class="img-responsive"/>
                     </div>
                     <div class="grid-left-grid1-pos">
-                        <p>top and classic designs <span>2016 Collection</span></p>
+                        <p th:text="*{index_banner_bottom_31_text}">top and classic designs </p>
                     </div>
                 </div>
             </div>
@@ -294,16 +290,18 @@
     </div>
 </div>
 <!-- //banner-bottom -->
-<!-- collections -->
+<!-- collections-->
 <div class="new-collections">
     <div class="container">
         <h3 class="animated wow zoomIn" data-wow-delay=".5s">宠物用品</h3>
         <p class="est animated wow zoomIn" data-wow-delay=".5s">为您的爱宠选择最合适的宠物用品与宠粮.</p>
         <div class="new-collections-grids">
             <div class="col-md-3 new-collections-grid">
+                <!--collections_11-->
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
                     <div class="new-collections-grid1-image">
-                        <a href="single.html" class="product-image"><img src="images/7.jpg" alt=" "
+                        <a href="single.html" class="product-image"><img th:src="*{index_collections_11_url}"
+                                                                         src="../static/images/7.jpg" alt=" "
                                                                          class="img-responsive"/></a>
                         <div class="new-collections-grid1-image-pos">
                             <a href="single.html">Quick View</a>
@@ -311,33 +309,36 @@
                         <div class="new-collections-grid1-right">
                             <div class="rating">
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-                    <h4><a href="single.html">Formal Shirt</a></h4>
-                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <h4><a th:text="*{index_collections_11_text}" href="single.html">Formal Shirt</a></h4>
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
-                        <p><i>$325</i> <span class="item_price">$250</span><a class="item_add" href="#">加入购物车 </a></p>
+                        <p><i th:text="*{index_collections_11_pre_text}">$325</i> <span class="item_price"
+                                                                                        th:text="*{index_collections_11_now_text}">$250</span><a
+                                class="item_add" href="#">加入购物车 </a></p>
                     </div>
                 </div>
+                <!--collections_12-->
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
                     <div class="new-collections-grid1-image">
-                        <a href="single.html" class="product-image"><img src="images/8.jpg" alt=" "
+                        <a href="single.html" class="product-image"><img th:src="*{index_collections_12_url}"
+                                                                         src="../static/images/8.jpg" alt=" "
                                                                          class="img-responsive"/></a>
                         <div class="new-collections-grid1-image-pos">
                             <a href="single.html">Quick View</a>
@@ -345,36 +346,39 @@
                         <div class="new-collections-grid1-right">
                             <div class="rating">
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-                    <h4><a href="single.html">Running Shoes</a></h4>
-                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <h4><a href="single.html" th:text="*{index_collections_12_text}">Running Shoes</a></h4>
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
-                        <p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">加入购物车 </a></p>
+                        <p><i th:text="*{index_collections_12_pre_text}">$280</i> <span class="item_price"
+                                                                                        th:text="*{index_collections_12_now_text}">$150</span><a
+                                class="item_add" href="#">加入购物车 </a></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 new-collections-grid">
+                <!--collections_21-->
                 <div class="new-collections-grid1 new-collections-grid1-image-width animated wow slideInUp"
                      data-wow-delay=".2s">
                     <div class="new-collections-grid1-image">
-                        <a href="single.html" class="product-image"><img src="images/5.jpg" alt=" "
+                        <a href="single.html" class="product-image"><img th:src="*{index_collections_21_url}"
+                                                                         src="../static/images/5.jpg" alt=" "
                                                                          class="img-responsive"/></a>
                         <div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">
                             <a href="single.html">Quick View</a>
@@ -382,19 +386,19 @@
                         <div class="new-collections-grid1-right new-collections-grid1-right-rate">
                             <div class="rating">
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -403,17 +407,20 @@
                             <p>New</p>
                         </div>
                     </div>
-                    <h4><a href="single.html">Dining Table</a></h4>
-                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <h4><a href="single.html" th:text="*{index_collections_21_text}">Dining Table</a></h4>
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
-                        <p><i>$580</i> <span class="item_price">$550</span><a class="item_add" href="#">加入购物车 </a></p>
+                        <p><i th:text="*{index_collections_21_pre_text}">$580</i> <span class="item_price"
+                                                                                        th:text="*{index_collections_21_now_text}">$550</span><a
+                                class="item_add" href="#">加入购物车 </a></p>
                     </div>
                 </div>
                 <div class="new-collections-grid-sub-grids">
+                    <!--collections_22-->
                     <div class="new-collections-grid1-sub">
                         <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
                             <div class="new-collections-grid1-image">
-                                <a href="single.html" class="product-image"><img src="images/6.jpg" alt=" "
+                                <a href="single.html" class="product-image"><img th:src="*{index_collections_22_url}"
+                                                                                 src="../static/images/6.jpg" alt=" "
                                                                                  class="img-responsive"/></a>
                                 <div class="new-collections-grid1-image-pos">
                                     <a href="single.html">Quick View</a>
@@ -421,36 +428,39 @@
                                 <div class="new-collections-grid1-right">
                                     <div class="rating">
                                         <div class="rating-left">
-                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
                             </div>
-                            <h4><a href="single.html">Wall Lamp</a></h4>
-                            <p>Vel illum qui dolorem eum fugiat.</p>
+                            <h4><a href="single.html" th:text="*{index_collections_22_text}">Wall Lamp</a></h4>
                             <div class="new-collections-grid1-left simpleCart_shelfItem">
-                                <p><i>$480</i> <span class="item_price">$400</span><a class="item_add"
-                                                                                      href="#">加入购物车 </a></p>
+                                <p><i th:text="*{index_collections_22_pre_text}">$480</i> <span class="item_price"
+                                                                                                th:text="*{index_collections_22_now_text}">$400</span><a
+                                        class="item_add"
+                                        href="#">加入购物车 </a></p>
                             </div>
                         </div>
                     </div>
+                    <!--collections_23-->
                     <div class="new-collections-grid1-sub">
                         <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
                             <div class="new-collections-grid1-image">
-                                <a href="single.html" class="product-image"><img src="images/9.jpg" alt=" "
+                                <a href="single.html" class="product-image"><img th:src="*{index_collections_23_url}"
+                                                                                 src="../static/images/9.jpg" alt=" "
                                                                                  class="img-responsive"/></a>
                                 <div class="new-collections-grid1-image-pos">
                                     <a href="single.html">Quick View</a>
@@ -458,29 +468,30 @@
                                 <div class="new-collections-grid1-right">
                                     <div class="rating">
                                         <div class="rating-left">
-                                            <img src="images/2.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="rating-left">
-                                            <img src="images/1.png" alt=" " class="img-responsive"/>
+                                            <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
                             </div>
-                            <h4><a href="single.html">Wall Lamp</a></h4>
-                            <p>Vel illum qui dolorem eum fugiat.</p>
+                            <h4><a th:text="*{index_collections_23_text}" href="single.html">Wall Lamp</a></h4>
                             <div class="new-collections-grid1-left simpleCart_shelfItem">
-                                <p><i>$280</i> <span class="item_price">$150</span><a class="item_add"
-                                                                                      href="#">加入购物车</a></p>
+                                <p><i th:text="*{index_collections_23_pre_text}">$280</i> <span class="item_price"
+                                                                                                th:text="*{index_collections_23_now_text}">$150</span><a
+                                        class="item_add"
+                                        href="#">加入购物车</a></p>
                             </div>
                         </div>
                     </div>
@@ -488,9 +499,11 @@
                 </div>
             </div>
             <div class="col-md-3 new-collections-grid">
+                <!--collections_31-->
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
                     <div class="new-collections-grid1-image">
-                        <a href="single.html" class="product-image"><img src="images/10.jpg" alt=" "
+                        <a href="single.html" class="product-image"><img th:src="*{index_collections_31_url}"
+                                                                         src="../static/images/10.jpg" alt=" "
                                                                          class="img-responsive"/></a>
                         <div class="new-collections-grid1-image-pos">
                             <a href="single.html">Quick View</a>
@@ -498,33 +511,36 @@
                         <div class="new-collections-grid1-right">
                             <div class="rating">
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-                    <h4><a href="single.html">Pearl & Stone Anklet</a></h4>
-                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <h4><a th:text="*{index_collections_31_text}" href="single.html">Pearl & Stone Anklet</a></h4>
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
-                        <p><i>$180</i> <span class="item_price">$120</span><a class="item_add" href="#">加入购物车 </a></p>
+                        <p><i th:text="*{index_collections_31_pre_text}">$180</i> <span class="item_price"
+                                                                                        th:text="*{index_collections_31_now_text}">$120</span><a
+                                class="item_add" href="#">加入购物车 </a></p>
                     </div>
                 </div>
+                <!--collections_32-->
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".2s">
                     <div class="new-collections-grid1-image">
-                        <a href="single.html" class="product-image"><img src="images/11.jpg" alt=" "
+                        <a href="single.html" class="product-image"><img th:src="*{index_collections_32_url}"
+                                                                         src="../static/images/11.jpg" alt=" "
                                                                          class="img-responsive"/></a>
                         <div class="new-collections-grid1-image-pos">
                             <a href="single.html">Quick View</a>
@@ -532,28 +548,29 @@
                         <div class="new-collections-grid1-right">
                             <div class="rating">
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive"/>
+                                    <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-                    <h4><a href="single.html">Stones Bangles</a></h4>
-                    <p>Vel illum qui dolorem eum fugiat.</p>
+                    <h4><a th:text="*{index_collections_32_text}" href="single.html">Stones Bangles</a></h4>
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
-                        <p><i>$340</i> <span class="item_price">$257</span><a class="item_add" href="#">加入购物车</a></p>
+                        <p><i th:text="*{index_collections_32_pre_text}">$340</i> <span class="item_price"
+                                                                                        th:text="*{index_collections_32_now_text}">$257</span><a
+                                class="item_add" href="#">加入购物车</a></p>
                     </div>
                 </div>
             </div>
@@ -562,45 +579,49 @@
     </div>
 </div>
 <!-- //collections -->
-<!-- new-timer -->
+<!-- seckill begin-->
 <div class="timer">
     <div class="container">
         <div class="timer-grids">
             <div class="col-md-8 timer-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-                <h3><a href="products.html">sunt in culpa qui officia deserunt mollit</a></h3>
+                <h3><a href="products.html" th:text="*{index_seckill_title_text}">sunt in culpa qui officia deserunt
+                    mollit</a></h3>
                 <div class="rating">
                     <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                        <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                     </div>
                     <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                        <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                     </div>
                     <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                        <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                     </div>
                     <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
+                        <img src="../static/images/2.png" alt=" " class="img-responsive"/>
                     </div>
                     <div class="rating-left">
-                        <img src="images/1.png" alt=" " class="img-responsive"/>
+                        <img src="../static/images/1.png" alt=" " class="img-responsive"/>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
-                    <p><i>$580</i> <span class="item_price">$550</span></p>
-                    <h4>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                    <p><i th:text="*{index_seckill_pre_text}">$580</i> <span class="item_price"
+                                                                             th:text="*{index_seckill_now_text}">$550</span>
+                    </p>
+                    <h4 th:text="*{index_seckill_desc_text}">Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                        corporis suscipit laboriosam,
                         nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
                         qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui
                         dolorem eum fugiat quo voluptas nulla pariatur.</h4>
-                    <p><a class="item_add timer_add" href="#">add to cart </a></p>
+                    <p><a class="item_add timer_add" href="#">加入购物车 </a></p>
                 </div>
                 <div id="counter"></div>
-                <script src="/src/js/jquery.countdown.js"></script>
-                <script src="/src/js/script.js"></script>
+                <script src="../static/js/jquery.countdown.js"></script>
             </div>
             <div class="col-md-4 timer-grid-right animated wow slideInRight" data-wow-delay=".5s">
                 <div class="timer-grid-right1">
-                    <img src="images/17.jpg" alt=" " class="img-responsive"/>
+                    <img th:src="*{index_seckill_jpg_url}" src="../static/images/17.jpg" alt=" "
+                         class="img-responsive"/>
                     <div class="timer-grid-right-pos">
                         <h4>Special Offer</h4>
                     </div>
@@ -610,7 +631,7 @@
         </div>
     </div>
 </div>
-<!-- //new-timer -->
+<!-- seckill end -->
 <!-- collections-bottom -->
 <div class="collections-bottom">
     <div class="container">
@@ -666,42 +687,68 @@
 <!-- //footer -->
 
 
-<!--my own js  begin  -->
-<script type="text/javascript">
-    $("#turn_to_0").click(function () {
-        $('.banner').css({
-            'background': 'url(images/banner1.jpg) no-repeat 0px 0px',
-            'background-size': 'cover',
-            '-webkit-background-size': 'cover',
-            '-moz-background-size': 'cover',
-            '-o-background-size': 'cover',
-            '-ms-background-size': 'cover',
-            'min-height': '700px'
-        });   //修改横幅背景图1
-    });
-    $("#turn_to_1").click(function () {
-        $('.banner').css({
-            'background': 'url(images/banner2.jpg) no-repeat 0px 0px',
-            'background-size': 'cover',
-            '-webkit-background-size': 'cover',
-            '-moz-background-size': 'cover',
-            '-o-background-size': 'cover',
-            '-ms-background-size': 'cover',
-            'min-height': '700px'
-        });   //修改横幅背景图2
-    });
-    $("#turn_to_2").click(function () {
-        $('.banner').css({
-            'background': 'url(images/banner3.jpg) no-repeat 0px 0px',
-            'background-size': 'cover',
-            '-webkit-background-size': 'cover',
-            '-moz-background-size': 'cover',
-            '-o-background-size': 'cover',
-            '-ms-background-size': 'cover',
-            'min-height': '700px'
-        });   //修改横幅背景图3
-    });
+<!--my own js  -->
+<script th:inline="javascript">
+    $(document).ready(function () {
+        /* ---- Countdown timer ---- */
+        $('#counter').countdown({
+            timestamp : (new Date()).getTime() +/*[[*{index_seckill_timeleft_text}]]*/
+        });
 
+        $('#links a').hover(
+            function () {
+                $(this).animate({left: 3}, 'fast');
+            },
+            function () {
+                $(this).animate({left: 0}, 'fast');
+            }
+        );
+        $('footer a').hover(
+            function () {
+                $(this).animate({top: 3}, 'fast');
+            },
+            function () {
+                $(this).animate({top: 0}, 'fast');
+            }
+        );
+
+        $("#turn_to_0").click(function () {
+            $('.banner').css({
+                'background': 'url(/*[[*{index_banner_pic0_url}]]*/) no-repeat 0px 0px',
+                'background-size': 'cover',
+                '-webkit-background-size': 'cover',
+                '-moz-background-size': 'cover',
+                '-o-background-size': 'cover',
+                '-ms-background-size': 'cover',
+                'min-height': '700px'
+            });   //修改横幅背景图1
+        });
+        $("#turn_to_1").click(function () {
+            $('.banner').css({
+                'background': 'url(/*[[*{index_banner_pic1_url}]]*/) no-repeat 0px 0px',
+                'background-size': 'cover',
+                '-webkit-background-size': 'cover',
+                '-moz-background-size': 'cover',
+                '-o-background-size': 'cover',
+                '-ms-background-size': 'cover',
+                'min-height': '700px'
+            });   //修改横幅背景图2
+        });
+        $("#turn_to_2").click(function () {
+            $('.banner').css({
+                'background': 'url(/*[[*{index_banner_pic2_url}]]*/) no-repeat 0px 0px',
+                'background-size': 'cover',
+                '-webkit-background-size': 'cover',
+                '-moz-background-size': 'cover',
+                '-o-background-size': 'cover',
+                '-ms-background-size': 'cover',
+                'min-height': '700px'
+            });   //修改横幅背景图3
+        });
+
+
+
+    });
     <!--实现轮播图 begin-->
     var i = 1;
     function changeBannerImage() {

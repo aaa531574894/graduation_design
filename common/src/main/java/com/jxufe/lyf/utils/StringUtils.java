@@ -14,7 +14,7 @@ public class StringUtils {
      * 　* @date 2018/3/16 19:24
      */
     public static boolean isNullOrEmpty(String str) {
-        if (null == str || "".equals(str)) {
+        if (null == str || "".equals(str.trim())) {
             return true;
         } else {
             return false;
